@@ -1,0 +1,193 @@
+'use client';
+
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Code, Palette, Cpu, Zap, ArrowRight } from 'lucide-react';
+import Logo from '@/components/ui/Logo';
+
+export default function Home() {
+  const stats = [
+    { number: '50+', label: 'Projects Delivered' },
+    { number: '100%', label: 'Client Satisfaction' },
+    { number: '5+', label: 'Years Experience' },
+    { number: '24/7', label: 'Support' },
+  ];
+
+  const features = [
+    {
+      icon: <Code className="w-6 h-6" />,
+      title: 'Full-Stack Mastery',
+      description: 'From React frontends to robust Node.js backends, we build complete solutions.'
+    },
+    {
+      icon: <Palette className="w-6 h-6" />,
+      title: 'Creative Design',
+      description: 'Beautiful, intuitive interfaces that users love and remember.'
+    },
+    {
+      icon: <Cpu className="w-6 h-6" />,
+      title: 'Modern Tech Stack',
+      description: 'Cutting-edge technologies for scalable, future-proof applications.'
+    },
+    {
+      icon: <Zap className="w-6 h-6" />,
+      title: 'Lightning Fast',
+      description: 'Optimized performance that keeps users engaged and search engines happy.'
+    },
+  ];
+
+  return (
+    <div className="min-h-screen vintage-texture">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black opacity-90" />
+        
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="text-center max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="mb-8"
+            >
+              <Logo size="lg" className="justify-center mb-8" />
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6"
+            >
+              <span className="gradient-text">Crafting Digital</span>
+              <br />
+              <span className="text-white">Experiences</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-xl sm:text-2xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto"
+            >
+              Where technical expertise meets artistic innovation. We build full-stack web applications 
+              that don&apos;t just work—they inspire.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+            >
+              <Link
+                href="/contact"
+                className="group bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 glow-effect"
+              >
+                Start Your Project
+                <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              
+              <Link
+                href="/services"
+                className="glass-effect px-8 py-4 rounded-full text-lg font-medium text-amber-400 hover:text-amber-300 transition-colors duration-300 border border-amber-600/30 hover:border-amber-400/50"
+              >
+                View Our Work
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="grid grid-cols-2 sm:grid-cols-4 gap-8"
+            >
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.05 }}
+                  className="text-center"
+                >
+                  <div className="text-3xl sm:text-4xl font-bold gradient-text mb-2">
+                    {stat.number}
+                  </div>
+                  <div className="text-gray-400 text-sm sm:text-base">
+                    {stat.label}
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-gradient-to-b from-black to-gray-900">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl sm:text-5xl font-bold mb-6">
+              <span className="gradient-text">Why Choose</span> Tech Stack Studio?
+            </h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              We combine cutting-edge technology with creative vision to deliver 
+              exceptional web experiences that drive results.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }}
+                className="glass-effect p-6 rounded-xl text-center hover:border-amber-400/50 transition-all duration-300"
+              >
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg mb-4 text-black">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-amber-400 mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-gradient-to-r from-amber-900/10 via-amber-800/5 to-amber-900/10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl sm:text-5xl font-bold mb-6">
+              Ready to Build Something <span className="gradient-text">Amazing</span>?
+            </h2>
+            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+              Let&apos;s discuss your project and bring your vision to life with our expertise.
+            </p>
+            <Link
+              href="/contact"
+              className="group inline-flex items-center bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 glow-effect"
+            >
+              Get Started Today
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+}
