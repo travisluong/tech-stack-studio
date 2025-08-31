@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { 
   Code, 
   Palette, 
@@ -180,8 +181,17 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen vintage-texture">
-      <section className="py-20 bg-gradient-to-br from-black via-gray-900 to-black">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <Image
+            src="/uploads/Abstract_technology_and_development_themed_images_32623f16-6856-47c1-b8f0-c58ca4d209fe_2.png"
+            alt="Technology background"
+            fill
+            className="object-cover"
+          />
+        </div>
+        
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -196,6 +206,25 @@ export default function ServicesPage() {
               that bring your digital vision to life.
             </p>
           </motion.div>
+
+          <div className="flex justify-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <Image
+                src="/uploads/Minimalist_tech_icons_in_golden_amber_color_vinta_8c60633d-9243-4dbc-8316-927b1631b158_1.png"
+                alt="Technology stack icons"
+                width={800}
+                height={200}
+                className="rounded-xl opacity-80"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20 rounded-xl" />
+            </motion.div>
+          </div>
 
           <div className="grid lg:grid-cols-2 gap-8 mb-20">
             {services.map((service, index) => (
@@ -253,8 +282,17 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 bg-gradient-to-b from-gray-900 to-black overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <Image
+            src="/uploads/Vintage_technical_diagram_showing_workflow_proces_a52a9a86-ceb4-45d6-a032-8ce1344f22a2_0.png"
+            alt="Technical workflow diagram"
+            fill
+            className="object-cover"
+          />
+        </div>
+        
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

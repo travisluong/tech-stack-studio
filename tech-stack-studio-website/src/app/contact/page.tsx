@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
 
 export default function ContactPage() {
@@ -118,8 +119,17 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen vintage-texture">
-      <section className="py-20 bg-gradient-to-br from-black via-gray-900 to-black">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <Image
+            src="/uploads/Translucent_glass_effect_backgrounds_with_subtle__c237b576-5f32-4fe8-98dd-4d3805568f89_2.png"
+            alt="Glass effect background"
+            fill
+            className="object-cover"
+          />
+        </div>
+        
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}

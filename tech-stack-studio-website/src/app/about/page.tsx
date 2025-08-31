@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Users, Target, Lightbulb, Award, Code2, Heart } from 'lucide-react';
 import Link from 'next/link';
 
@@ -58,8 +59,17 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen vintage-texture">
-      <section className="py-20 bg-gradient-to-br from-black via-gray-900 to-black">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <Image
+            src="/uploads/Subtle_textured_background_with_vintage_paper_tex_7311e1ed-9e13-4dec-97f3-ba062da0e4e1_0.png"
+            alt="Vintage texture background"
+            fill
+            className="object-cover"
+          />
+        </div>
+        
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -109,29 +119,39 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="glass-effect p-8 rounded-2xl"
+              className="relative"
             >
-              <h3 className="text-2xl font-bold text-amber-400 mb-6">Why We Do This</h3>
-              <div className="space-y-4 text-gray-300">
-                <div className="flex items-start space-x-3">
-                  <Target className="w-6 h-6 text-amber-400 mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold mb-2">Mission-Driven</h4>
-                    <p>To create web experiences that don&apos;t just meet expectations—they exceed them.</p>
+              <Image
+                src="/uploads/Abstract_representation_of_collaboration_and_crea_b53b3e27-06be-457c-b859-c431e546450c_1.png"
+                alt="Abstract representation of collaboration and creativity"
+                width={600}
+                height={400}
+                className="rounded-2xl shadow-2xl mb-8"
+              />
+              
+              <div className="glass-effect p-8 rounded-2xl">
+                <h3 className="text-2xl font-bold text-amber-400 mb-6">Why We Do This</h3>
+                <div className="space-y-4 text-gray-300">
+                  <div className="flex items-start space-x-3">
+                    <Target className="w-6 h-6 text-amber-400 mt-1 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold mb-2">Mission-Driven</h4>
+                      <p>To create web experiences that don&apos;t just meet expectations—they exceed them.</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <Award className="w-6 h-6 text-amber-400 mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold mb-2">Quality-Obsessed</h4>
-                    <p>Every project gets our full attention, from initial concept to final deployment.</p>
+                  <div className="flex items-start space-x-3">
+                    <Award className="w-6 h-6 text-amber-400 mt-1 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold mb-2">Quality-Obsessed</h4>
+                      <p>Every project gets our full attention, from initial concept to final deployment.</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <Lightbulb className="w-6 h-6 text-amber-400 mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold mb-2">Always Learning</h4>
-                    <p>Technology evolves fast, and we evolve with it, always staying ahead of the curve.</p>
+                  <div className="flex items-start space-x-3">
+                    <Lightbulb className="w-6 h-6 text-amber-400 mt-1 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold mb-2">Always Learning</h4>
+                      <p>Technology evolves fast, and we evolve with it, always staying ahead of the curve.</p>
+                    </div>
                   </div>
                 </div>
               </div>
