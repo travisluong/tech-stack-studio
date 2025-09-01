@@ -1,182 +1,234 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { 
-  Code, 
-  Palette, 
-  Database, 
-  Cloud, 
-  Smartphone, 
+import { motion } from "framer-motion";
+import Image from "next/image";
+import {
+  Code,
+  Palette,
+  Database,
+  Cloud,
+  Smartphone,
   Search,
   Zap,
   ArrowRight,
-  Check
-} from 'lucide-react';
-import Link from 'next/link';
+  Check,
+} from "lucide-react";
+import Link from "next/link";
 
 export default function ServicesPage() {
   const services = [
     {
       icon: <Code className="w-8 h-8" />,
-      title: 'Full-Stack Development',
-      description: 'Complete web applications from frontend to backend, built with modern frameworks and best practices.',
+      title: "Full-Stack Development",
+      description:
+        "Complete web applications from frontend to backend, built with modern frameworks and best practices.",
       features: [
-        'React & Next.js Applications',
-        'Node.js Backend Development',
-        'RESTful API Design',
-        'Database Architecture',
-        'Authentication Systems',
-        'Real-time Features'
+        "React & Next.js Applications",
+        "Node.js Backend Development",
+        "RESTful API Design",
+        "Database Architecture",
+        "Authentication Systems",
+        "Real-time Features",
       ],
-      technologies: ['React', 'Next.js', 'Node.js', 'TypeScript', 'PostgreSQL', 'MongoDB']
+      technologies: [
+        "React",
+        "Next.js",
+        "Node.js",
+        "TypeScript",
+        "PostgreSQL",
+        "MongoDB",
+      ],
     },
     {
       icon: <Palette className="w-8 h-8" />,
-      title: 'UI/UX Design',
-      description: 'Beautiful, intuitive interfaces that users love, backed by solid user experience principles.',
+      title: "UI/UX Design",
+      description:
+        "Beautiful, intuitive interfaces that users love, backed by solid user experience principles.",
       features: [
-        'User Interface Design',
-        'User Experience Research',
-        'Wireframing & Prototyping',
-        'Design Systems',
-        'Responsive Design',
-        'Accessibility Standards'
+        "User Interface Design",
+        "User Experience Research",
+        "Wireframing & Prototyping",
+        "Design Systems",
+        "Responsive Design",
+        "Accessibility Standards",
       ],
-      technologies: ['Figma', 'Adobe Creative Suite', 'Tailwind CSS', 'Framer Motion', 'CSS3', 'HTML5']
+      technologies: [
+        "Figma",
+        "Adobe Creative Suite",
+        "Tailwind CSS",
+        "Framer Motion",
+        "CSS3",
+        "HTML5",
+      ],
     },
     {
       icon: <Database className="w-8 h-8" />,
-      title: 'Backend & APIs',
-      description: 'Robust server architectures and APIs that scale with your business needs.',
+      title: "Backend & APIs",
+      description:
+        "Robust server architectures and APIs that scale with your business needs.",
       features: [
-        'RESTful API Development',
-        'GraphQL Implementation',
-        'Database Design & Optimization',
-        'Third-party Integrations',
-        'Payment Processing',
-        'Data Migration Services'
+        "RESTful API Development",
+        "GraphQL Implementation",
+        "Database Design & Optimization",
+        "Third-party Integrations",
+        "Payment Processing",
+        "Data Migration Services",
       ],
-      technologies: ['Express.js', 'Fastify', 'GraphQL', 'PostgreSQL', 'Redis', 'Docker']
+      technologies: [
+        "Express.js",
+        "Fastify",
+        "GraphQL",
+        "PostgreSQL",
+        "Redis",
+        "Docker",
+      ],
     },
     {
       icon: <Cloud className="w-8 h-8" />,
-      title: 'Cloud Solutions',
-      description: 'Scalable cloud infrastructure and deployment strategies for modern applications.',
+      title: "Cloud Solutions",
+      description:
+        "Scalable cloud infrastructure and deployment strategies for modern applications.",
       features: [
-        'Cloud Architecture Design',
-        'CI/CD Pipeline Setup',
-        'Container Orchestration',
-        'Monitoring & Analytics',
-        'Performance Optimization',
-        'Security Implementation'
+        "Cloud Architecture Design",
+        "CI/CD Pipeline Setup",
+        "Container Orchestration",
+        "Monitoring & Analytics",
+        "Performance Optimization",
+        "Security Implementation",
       ],
-      technologies: ['AWS', 'Vercel', 'Docker', 'GitHub Actions', 'Terraform', 'Kubernetes']
+      technologies: [
+        "AWS",
+        "Vercel",
+        "Docker",
+        "GitHub Actions",
+        "Terraform",
+        "Kubernetes",
+      ],
     },
     {
       icon: <Smartphone className="w-8 h-8" />,
-      title: 'Mobile-First Development',
-      description: 'Responsive web applications that work perfectly across all devices and screen sizes.',
+      title: "Mobile-First Development",
+      description:
+        "Responsive web applications that work perfectly across all devices and screen sizes.",
       features: [
-        'Progressive Web Apps (PWA)',
-        'Mobile-Responsive Design',
-        'Touch-Friendly Interfaces',
-        'Offline Functionality',
-        'Performance Optimization',
-        'Cross-Browser Compatibility'
+        "Progressive Web Apps (PWA)",
+        "Mobile-Responsive Design",
+        "Touch-Friendly Interfaces",
+        "Offline Functionality",
+        "Performance Optimization",
+        "Cross-Browser Compatibility",
       ],
-      technologies: ['PWA', 'Service Workers', 'Responsive Design', 'Mobile Testing', 'Touch Events', 'Webkit']
+      technologies: [
+        "PWA",
+        "Service Workers",
+        "Responsive Design",
+        "Mobile Testing",
+        "Touch Events",
+        "Webkit",
+      ],
     },
     {
       icon: <Search className="w-8 h-8" />,
-      title: 'SEO & Performance',
-      description: 'Optimized applications that rank well in search engines and load lightning-fast.',
+      title: "SEO & Performance",
+      description:
+        "Optimized applications that rank well in search engines and load lightning-fast.",
       features: [
-        'Technical SEO Optimization',
-        'Performance Auditing',
-        'Core Web Vitals',
-        'Page Speed Optimization',
-        'Meta Tags & Schema',
-        'Analytics Integration'
+        "Technical SEO Optimization",
+        "Performance Auditing",
+        "Core Web Vitals",
+        "Page Speed Optimization",
+        "Meta Tags & Schema",
+        "Analytics Integration",
       ],
-      technologies: ['Next.js SEO', 'Lighthouse', 'Google Analytics', 'Search Console', 'GTM', 'Structured Data']
-    }
+      technologies: [
+        "Next.js SEO",
+        "Lighthouse",
+        "Google Analytics",
+        "Search Console",
+        "GTM",
+        "Structured Data",
+      ],
+    },
   ];
 
   const process = [
     {
-      step: '01',
-      title: 'Discovery & Planning',
-      description: 'We start by understanding your vision, goals, and requirements through detailed consultation.',
-      icon: <Search className="w-6 h-6" />
+      step: "01",
+      title: "Discovery & Planning",
+      description:
+        "We start by understanding your vision, goals, and requirements through detailed consultation.",
+      icon: <Search className="w-6 h-6" />,
     },
     {
-      step: '02',
-      title: 'Design & Prototyping',
-      description: 'Creating wireframes, mockups, and interactive prototypes to visualize the solution.',
-      icon: <Palette className="w-6 h-6" />
+      step: "02",
+      title: "Design & Prototyping",
+      description:
+        "Creating wireframes, mockups, and interactive prototypes to visualize the solution.",
+      icon: <Palette className="w-6 h-6" />,
     },
     {
-      step: '03',
-      title: 'Development & Testing',
-      description: 'Building your application with clean code, thorough testing, and regular updates.',
-      icon: <Code className="w-6 h-6" />
+      step: "03",
+      title: "Development & Testing",
+      description:
+        "Building your application with clean code, thorough testing, and regular updates.",
+      icon: <Code className="w-6 h-6" />,
     },
     {
-      step: '04',
-      title: 'Launch & Support',
-      description: 'Deploying to production and providing ongoing support and maintenance.',
-      icon: <Zap className="w-6 h-6" />
-    }
+      step: "04",
+      title: "Launch & Support",
+      description:
+        "Deploying to production and providing ongoing support and maintenance.",
+      icon: <Zap className="w-6 h-6" />,
+    },
   ];
 
   const packages = [
     {
-      name: 'Starter',
-      price: '$2,999',
-      description: 'Perfect for small businesses and startups',
+      name: "Starter",
+      price: "$2,999",
+      description: "Perfect for small businesses and startups",
       features: [
-        'Custom Website Design',
-        'Up to 5 Pages',
-        'Mobile Responsive',
-        'Basic SEO Setup',
-        'Contact Form',
-        '3 Months Support'
+        "Custom Website Design",
+        "Up to 5 Pages",
+        "Mobile Responsive",
+        "Basic SEO Setup",
+        "Contact Form",
+        "3 Months Support",
       ],
-      popular: false
+      popular: false,
     },
     {
-      name: 'Professional',
-      price: '$5,999',
-      description: 'Ideal for growing businesses',
+      name: "Professional",
+      price: "$5,999",
+      description: "Ideal for growing businesses",
       features: [
-        'Full Web Application',
-        'Custom Backend API',
-        'User Authentication',
-        'Database Integration',
-        'Advanced SEO',
-        'Payment Processing',
-        '6 Months Support',
-        'Analytics Setup'
+        "Full Web Application",
+        "Custom Backend API",
+        "User Authentication",
+        "Database Integration",
+        "Advanced SEO",
+        "Payment Processing",
+        "6 Months Support",
+        "Analytics Setup",
       ],
-      popular: true
+      popular: true,
     },
     {
-      name: 'Enterprise',
-      price: 'Custom',
-      description: 'For complex projects and large organizations',
+      name: "Enterprise",
+      price: "Custom",
+      description: "For complex projects and large organizations",
       features: [
-        'Scalable Architecture',
-        'Custom Integrations',
-        'Advanced Security',
-        'Performance Optimization',
-        'Cloud Infrastructure',
-        'Ongoing Maintenance',
-        'Priority Support',
-        'Team Training'
+        "Scalable Architecture",
+        "Custom Integrations",
+        "Advanced Security",
+        "Performance Optimization",
+        "Cloud Infrastructure",
+        "Ongoing Maintenance",
+        "Priority Support",
+        "Team Training",
       ],
-      popular: false
-    }
+      popular: false,
+    },
   ];
 
   return (
@@ -190,7 +242,7 @@ export default function ServicesPage() {
             className="object-cover"
           />
         </div>
-        
+
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -202,8 +254,8 @@ export default function ServicesPage() {
               Our <span className="gradient-text">Services</span>
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              From concept to deployment, we provide comprehensive full-stack development services 
-              that bring your digital vision to life.
+              From concept to deployment, we provide comprehensive full-stack
+              development services that bring your digital vision to life.
             </p>
           </motion.div>
 
@@ -216,7 +268,7 @@ export default function ServicesPage() {
               className="relative"
             >
               <Image
-                src="/uploads/Minimalist_tech_icons_in_golden_amber_color_vinta_8c60633d-9243-4dbc-8316-927b1631b158_1.png"
+                src="/uploads/Minimalist_tech_icons_in_golden_amber_color_vinta_8c60633d-9243-4dbc-8316-927b1631b158_2.png"
                 alt="Technology stack icons"
                 width={800}
                 height={200}
@@ -252,10 +304,15 @@ export default function ServicesPage() {
                 </div>
 
                 <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-amber-400 mb-3">What&apos;s Included:</h4>
+                  <h4 className="text-lg font-semibold text-amber-400 mb-3">
+                    What&apos;s Included:
+                  </h4>
                   <div className="grid sm:grid-cols-2 gap-2">
                     {service.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center space-x-2">
+                      <div
+                        key={featureIndex}
+                        className="flex items-center space-x-2"
+                      >
                         <Check className="w-4 h-4 text-amber-400 flex-shrink-0" />
                         <span className="text-gray-300 text-sm">{feature}</span>
                       </div>
@@ -264,7 +321,9 @@ export default function ServicesPage() {
                 </div>
 
                 <div>
-                  <h4 className="text-lg font-semibold text-amber-400 mb-3">Technologies:</h4>
+                  <h4 className="text-lg font-semibold text-amber-400 mb-3">
+                    Technologies:
+                  </h4>
                   <div className="flex flex-wrap gap-2">
                     {service.technologies.map((tech, techIndex) => (
                       <span
@@ -291,7 +350,7 @@ export default function ServicesPage() {
             className="object-cover"
           />
         </div>
-        
+
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -304,8 +363,8 @@ export default function ServicesPage() {
               Our <span className="gradient-text">Process</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              A proven methodology that ensures your project is delivered on time, 
-              within budget, and exceeds expectations.
+              A proven methodology that ensures your project is delivered on
+              time, within budget, and exceeds expectations.
             </p>
           </motion.div>
 
@@ -319,11 +378,11 @@ export default function ServicesPage() {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <div className="relative mb-6">
-                  <div className="w-20 h-20 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center text-black font-bold text-2xl mx-auto">
+                <div className="flex flex-col items-center mb-6 space-y-4">
+                  <div className="w-20 h-20 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center text-black font-bold text-2xl">
                     {step.step}
                   </div>
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center text-black">
+                  <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-amber-700 rounded-full flex items-center justify-center text-black">
                     {step.icon}
                   </div>
                 </div>
@@ -352,8 +411,8 @@ export default function ServicesPage() {
               <span className="gradient-text">Pricing</span> Packages
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Choose the package that best fits your needs. All packages include our commitment 
-              to quality and ongoing support.
+              Choose the package that best fits your needs. All packages include
+              our commitment to quality and ongoing support.
             </p>
           </motion.div>
 
@@ -367,9 +426,9 @@ export default function ServicesPage() {
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05 }}
                 className={`glass-effect p-8 rounded-xl relative transition-all duration-300 ${
-                  pkg.popular 
-                    ? 'border-amber-400/50 ring-2 ring-amber-400/30' 
-                    : 'hover:border-amber-400/50'
+                  pkg.popular
+                    ? "border-amber-400/50 ring-2 ring-amber-400/30"
+                    : "hover:border-amber-400/50"
                 }`}
               >
                 {pkg.popular && (
@@ -381,14 +440,21 @@ export default function ServicesPage() {
                 )}
 
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-amber-400 mb-2">{pkg.name}</h3>
-                  <div className="text-4xl font-bold gradient-text mb-2">{pkg.price}</div>
+                  <h3 className="text-2xl font-bold text-amber-400 mb-2">
+                    {pkg.name}
+                  </h3>
+                  <div className="text-4xl font-bold gradient-text mb-2">
+                    {pkg.price}
+                  </div>
                   <p className="text-gray-300">{pkg.description}</p>
                 </div>
 
                 <div className="space-y-3 mb-8">
                   {pkg.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center space-x-3">
+                    <div
+                      key={featureIndex}
+                      className="flex items-center space-x-3"
+                    >
                       <Check className="w-5 h-5 text-amber-400 flex-shrink-0" />
                       <span className="text-gray-300">{feature}</span>
                     </div>
@@ -399,8 +465,8 @@ export default function ServicesPage() {
                   href="/contact"
                   className={`block w-full text-center py-3 px-6 rounded-full font-semibold transition-all duration-300 ${
                     pkg.popular
-                      ? 'bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black'
-                      : 'border border-amber-600 text-amber-400 hover:bg-amber-600 hover:text-black'
+                      ? "bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black"
+                      : "border border-amber-600 text-amber-400 hover:bg-amber-600 hover:text-black"
                   }`}
                 >
                   Get Started
@@ -420,10 +486,12 @@ export default function ServicesPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl sm:text-5xl font-bold mb-6">
-              Ready to Start <span className="gradient-text">Your Project</span>?
+              Ready to Start <span className="gradient-text">Your Project</span>
+              ?
             </h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Let&apos;s discuss your requirements and create a custom solution that fits your needs perfectly.
+              Let&apos;s discuss your requirements and create a custom solution
+              that fits your needs perfectly.
             </p>
             <Link
               href="/contact"
