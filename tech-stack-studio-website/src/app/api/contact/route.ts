@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { sendContactEmails } from "@/lib/email";
+import { sendContactEmails } from "@/lib/postmark";
 import {
   validateContactForm,
   sanitizeFormData,
@@ -46,12 +46,9 @@ export async function POST(request: NextRequest) {
 
     // Check for required environment variables
     const requiredEnvVars = [
-      "SMTP_HOST",
-      "SMTP_PORT",
-      "SMTP_USER",
-      "SMTP_PASS",
-      "SMTP_FROM",
-      "SMTP_TO",
+      "POSTMARK_API_KEY",
+      "POSTMARK_FROM_EMAIL",
+      "POSTMARK_TO_EMAIL",
     ];
     const missingEnvVars = requiredEnvVars.filter(
       (envVar) => !process.env[envVar]
@@ -65,7 +62,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Send emails
+    // Send emails via Postmark
     const emailResult = await sendContactEmails(formData);
 
     // Log successful submission
@@ -82,10 +79,8 @@ export async function POST(request: NextRequest) {
       success: true,
       message:
         "Thank you for your message! We will get back to you within 24 hours.",
-      emailIds: {
-        client: emailResult.clientEmailId,
-        internal: emailResult.internalEmailId,
-      },
+      deliveryIds: emailResult.deliveryIds,
+      trackingEnabled: emailResult.trackingEnabled,
     });
   } catch (error) {
     console.error("Contact form submission error:", error);

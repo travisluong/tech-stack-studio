@@ -1,31 +1,32 @@
 # Contact Form Email Integration Setup Guide
 
-## 📧 Email Integration Status: READY
+## 📧 Email Integration Status: UPGRADED TO POSTMARK
 
-The contact form has been successfully wired up to send emails using Dreamhost SMTP with built-in spam protection. Here's what has been implemented:
+The contact form has been upgraded from Dreamhost SMTP to Postmark for improved deliverability and reliability. Here's what has been implemented:
 
 ### ✅ What's Been Done
 
-1. **Email Service** (`/src/lib/email.ts`)
+1. **Email Service** (`/src/lib/postmark.ts`)
 
-   - Nodemailer integration with Dreamhost SMTP
-   - Professional HTML email templates
+   - Postmark API integration (replaced Nodemailer/SMTP)
+   - Professional HTML email templates with monochromatic theme
    - Client confirmation emails
    - Internal notification emails
+   - Email tracking and delivery monitoring
 
 2. **API Endpoint** (`/src/app/api/contact/route.ts`)
 
-   - Form validation and sanitization
-   - Spam detection
-   - Error handling and logging
-   - SMTP configuration validation
+   - Updated to use Postmark instead of SMTP
+   - Enhanced error handling and logging
+   - Postmark configuration validation
+   - Improved response format with delivery tracking
 
 3. **Frontend Integration** (`/src/app/contact/page.tsx`)
 
-   - Updated form submission to use API
    - Real-time validation feedback
    - Loading states and error handling
    - Success/error toast notifications
+   - No changes required (backward compatible)
 
 4. **Security Features**
 
@@ -34,20 +35,29 @@ The contact form has been successfully wired up to send emails using Dreamhost S
    - Rate limiting structure
    - Environment variable validation
 
+5. **Health Monitoring** (`/src/app/api/health/email/route.ts`)
+
+   - Postmark connection health checks
+   - Service monitoring endpoint
+
 ### 🔧 Setup Instructions
 
-#### Step 1: Configure Environment Variables
+#### Step 1: Create Postmark Account
 
-1. Copy `.env.local.example` to `.env.local`
-2. Replace placeholder values with your Dreamhost email credentials:
+1. Sign up at [postmarkapp.com](https://postmarkapp.com)
+2. Create a new server for your website
+3. Verify your sender domain/email address
+4. Copy your Server API token
+
+#### Step 2: Configure Environment Variables
+
+1. Copy `.env.example` to `.env.local`
+2. Replace placeholder values with your Postmark credentials:
 
 ```env
-SMTP_HOST=mail.dreamhost.com
-SMTP_PORT=587
-SMTP_USER=your-actual-email@yourdomain.com
-SMTP_PASS=your-actual-password
-SMTP_FROM=your-actual-email@yourdomain.com
-SMTP_TO=your-actual-email@yourdomain.com
+POSTMARK_API_KEY=your-postmark-server-api-key
+POSTMARK_FROM_EMAIL=your-verified-sender@yourdomain.com
+POSTMARK_TO_EMAIL=your-email@yourdomain.com
 ```
 
 #### Step 2: Verify Dreamhost Email Settings
