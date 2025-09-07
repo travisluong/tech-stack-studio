@@ -27,7 +27,7 @@ export default function SectionDivider({
           className="opacity-30"
         />
       </div>
-      <div className="relative w-32 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent" />
+      <div className="relative w-32 h-1 bg-gradient-to-r from-transparent via-white to-transparent" />
     </motion.div>
   );
 }

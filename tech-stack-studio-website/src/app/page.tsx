@@ -98,7 +98,7 @@ export default function Home() {
             >
               <Link
                 href="/contact"
-                className="group bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 glow-effect"
+                className="group bg-gradient-to-r from-white to-gray-200 hover:from-gray-200 hover:to-gray-300 text-black px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 glow-effect"
               >
                 Start Your Project
                 <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -106,7 +106,7 @@ export default function Home() {
 
               <Link
                 href="/services"
-                className="glass-effect px-8 py-4 rounded-full text-lg font-medium text-amber-400 hover:text-amber-300 transition-colors duration-300 border border-amber-600/30 hover:border-amber-400/50"
+                className="glass-effect px-8 py-4 rounded-full text-lg font-medium text-white hover:text-gray-300 transition-colors duration-300 border border-white/30 hover:border-white/50"
               >
                 View Our Work
               </Link>
@@ -216,12 +216,12 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05 }}
-                className="glass-effect p-6 rounded-xl text-center hover:border-amber-400/50 transition-all duration-300"
+                className="glass-effect p-6 rounded-xl text-center hover:border-white/50 transition-all duration-300"
               >
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg mb-4 text-black">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-white to-gray-300 rounded-lg mb-4 text-black">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-amber-400 mb-3">
+                <h3 className="text-xl font-semibold text-white mb-3">
                   {feature.title}
                 </h3>
                 <p className="text-gray-300 leading-relaxed">
@@ -235,7 +235,7 @@ export default function Home() {
 
       <SectionDivider />
 
-      <section className="relative py-20 bg-gradient-to-r from-amber-900/10 via-amber-800/5 to-amber-900/10 overflow-hidden">
+      <section className="relative py-20 bg-gradient-to-r from-gray-900/10 via-gray-800/5 to-gray-900/10 overflow-hidden">
         <AnimatedBackground />
 
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -255,7 +255,7 @@ export default function Home() {
             </p>
             <Link
               href="/contact"
-              className="group inline-flex items-center bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 glow-effect"
+              className="group inline-flex items-center bg-gradient-to-r from-white to-gray-200 hover:from-gray-200 hover:to-gray-300 text-black px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 glow-effect"
             >
               Get Started Today
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />

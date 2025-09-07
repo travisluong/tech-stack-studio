@@ -177,7 +177,7 @@ export default function ContactPage() {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <CheckCircle className="w-20 h-20 text-amber-400 mx-auto mb-6" />
+          <CheckCircle className="w-20 h-20 text-white mx-auto mb-6" />
           <h1 className="text-4xl font-bold gradient-text mb-4">Thank You!</h1>
           <p className="text-xl text-gray-300 mb-8 max-w-md">
             We&apos;ve received your message and will get back to you within 24
@@ -195,7 +195,7 @@ export default function ContactPage() {
                 project: "",
               });
             }}
-            className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black px-8 py-3 rounded-full font-semibold transition-all duration-300"
+            className="bg-gradient-to-r from-white to-gray-200 hover:from-gray-200 hover:to-gray-300 text-black px-8 py-3 rounded-full font-semibold transition-all duration-300"
           >
             Send Another Message
           </button>
@@ -258,17 +258,17 @@ export default function ContactPage() {
                     transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
                     className="flex items-center space-x-4"
                   >
-                    <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center text-black">
+                    <div className="w-12 h-12 bg-gradient-to-br from-white to-gray-300 rounded-lg flex items-center justify-center text-black">
                       {item.icon}
                     </div>
                     <div>
-                      <h3 className="text-amber-400 font-semibold">
+                      <h3 className="text-white font-semibold">
                         {item.title}
                       </h3>
                       {item.link ? (
                         <a
                           href={item.link}
-                          className="text-gray-300 hover:text-amber-400 transition-colors"
+                          className="text-gray-300 hover:text-white transition-colors"
                         >
                           {item.info}
                         </a>
@@ -281,24 +281,24 @@ export default function ContactPage() {
               </div>
 
               <div className="glass-effect p-6 rounded-xl">
-                <h3 className="text-xl font-semibold text-amber-400 mb-4">
+                <h3 className="text-xl font-semibold text-white mb-4">
                   Why Choose Tech Stack Studio?
                 </h3>
                 <ul className="space-y-3 text-gray-300">
                   <li className="flex items-center space-x-2">
-                    <CheckCircle className="w-5 h-5 text-amber-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
                     <span>100% Client Satisfaction Rate</span>
                   </li>
                   <li className="flex items-center space-x-2">
-                    <CheckCircle className="w-5 h-5 text-amber-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
                     <span>Fast Turnaround Times</span>
                   </li>
                   <li className="flex items-center space-x-2">
-                    <CheckCircle className="w-5 h-5 text-amber-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
                     <span>Modern Technology Stack</span>
                   </li>
                   <li className="flex items-center space-x-2">
-                    <CheckCircle className="w-5 h-5 text-amber-400 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
                     <span>Ongoing Support & Maintenance</span>
                   </li>
                 </ul>
@@ -320,7 +320,7 @@ export default function ContactPage() {
 
                 <div className="grid md:grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label className="block text-amber-400 font-medium mb-2">
+                    <label className="block text-white font-medium mb-2">
                       Name *
                     </label>
                     <input
@@ -329,12 +329,12 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-black/50 border border-amber-600/30 rounded-lg text-white placeholder-gray-400 focus:border-amber-400 focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 bg-black/50 border border-white/30 rounded-lg text-white placeholder-gray-400 focus:border-white focus:outline-none transition-colors"
                       placeholder="Your full name"
                     />
                   </div>
                   <div>
-                    <label className="block text-amber-400 font-medium mb-2">
+                    <label className="block text-white font-medium mb-2">
                       Email *
                     </label>
                     <input
@@ -343,14 +343,14 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-black/50 border border-amber-600/30 rounded-lg text-white placeholder-gray-400 focus:border-amber-400 focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 bg-black/50 border border-white/30 rounded-lg text-white placeholder-gray-400 focus:border-white focus:outline-none transition-colors"
                       placeholder="your@email.com"
                     />
                   </div>
                 </div>
 
                 <div className="mb-4">
-                  <label className="block text-amber-400 font-medium mb-2">
+                  <label className="block text-white font-medium mb-2">
                     Company
                   </label>
                   <input
@@ -358,14 +358,14 @@ export default function ContactPage() {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-black/50 border border-amber-600/30 rounded-lg text-white placeholder-gray-400 focus:border-amber-400 focus:outline-none transition-colors"
+                    className="w-full px-4 py-3 bg-black/50 border border-white/30 rounded-lg text-white placeholder-gray-400 focus:border-white focus:outline-none transition-colors"
                     placeholder="Your company name"
                   />
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label className="block text-amber-400 font-medium mb-2">
+                    <label className="block text-white font-medium mb-2">
                       Project Type *
                     </label>
                     <select
@@ -373,7 +373,7 @@ export default function ContactPage() {
                       value={formData.project}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-black/50 border border-amber-600/30 rounded-lg text-white focus:border-amber-400 focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 bg-black/50 border border-white/30 rounded-lg text-white focus:border-white focus:outline-none transition-colors"
                     >
                       <option value="">Select project type</option>
                       {projectTypes.map((type) => (
@@ -384,14 +384,14 @@ export default function ContactPage() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-amber-400 font-medium mb-2">
+                    <label className="block text-white font-medium mb-2">
                       Budget Range
                     </label>
                     <select
                       name="budget"
                       value={formData.budget}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-black/50 border border-amber-600/30 rounded-lg text-white focus:border-amber-400 focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 bg-black/50 border border-white/30 rounded-lg text-white focus:border-white focus:outline-none transition-colors"
                     >
                       <option value="">Select budget range</option>
                       {budgetRanges.map((range) => (
@@ -404,7 +404,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="mb-6">
-                  <label className="block text-amber-400 font-medium mb-2">
+                  <label className="block text-white font-medium mb-2">
                     Project Details *
                   </label>
                   <textarea
@@ -413,7 +413,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 bg-black/50 border border-amber-600/30 rounded-lg text-white placeholder-gray-400 focus:border-amber-400 focus:outline-none transition-colors resize-none"
+                    className="w-full px-4 py-3 bg-black/50 border border-white/30 rounded-lg text-white placeholder-gray-400 focus:border-white focus:outline-none transition-colors resize-none"
                     placeholder="Tell us about your project, goals, and requirements..."
                   />
                 </div>
@@ -421,7 +421,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 disabled:from-gray-600 disabled:to-gray-700 text-black px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center space-x-2"
+                  className="w-full bg-gradient-to-r from-white to-gray-200 hover:from-gray-200 hover:to-gray-300 disabled:from-gray-600 disabled:to-gray-700 text-black px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center space-x-2"
                 >
                   {isLoading ? (
                     <>
@@ -463,7 +463,7 @@ export default function ContactPage() {
                   viewport={{ once: true }}
                   className="glass-effect p-6 rounded-xl"
                 >
-                  <h3 className="text-xl font-semibold text-amber-400 mb-3">
+                  <h3 className="text-xl font-semibold text-white mb-3">
                     How long does a typical project take?
                   </h3>
                   <p className="text-gray-300">
@@ -481,7 +481,7 @@ export default function ContactPage() {
                   viewport={{ once: true }}
                   className="glass-effect p-6 rounded-xl"
                 >
-                  <h3 className="text-xl font-semibold text-amber-400 mb-3">
+                  <h3 className="text-xl font-semibold text-white mb-3">
                     Do you provide ongoing support after launch?
                   </h3>
                   <p className="text-gray-300">
@@ -498,7 +498,7 @@ export default function ContactPage() {
                   viewport={{ once: true }}
                   className="glass-effect p-6 rounded-xl"
                 >
-                  <h3 className="text-xl font-semibold text-amber-400 mb-3">
+                  <h3 className="text-xl font-semibold text-white mb-3">
                     Can you work with our existing team?
                   </h3>
                   <p className="text-gray-300">

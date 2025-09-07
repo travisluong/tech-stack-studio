@@ -287,24 +287,22 @@ export default function ServicesPage() {
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.02 }}
-                className="glass-effect p-8 rounded-xl hover:border-amber-400/50 transition-all duration-300"
+                className="glass-effect p-8 rounded-xl hover:border-white/50 transition-all duration-300"
               >
-                <div className="flex items-start space-x-4 mb-6">
-                  <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center text-black">
+                <div className="flex items-start space-x-6">
+                  <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-white to-gray-300 rounded-lg flex items-center justify-center text-black">
                     {service.icon}
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-semibold text-amber-400 mb-2">
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-semibold text-white mb-2">
                       {service.title}
                     </h3>
-                    <p className="text-gray-300 leading-relaxed">
+                    <p className="text-gray-300 leading-relaxed mb-6">
                       {service.description}
                     </p>
-                  </div>
-                </div>
 
                 <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-amber-400 mb-3">
+                  <h4 className="text-lg font-semibold text-white mb-3">
                     What&apos;s Included:
                   </h4>
                   <div className="grid sm:grid-cols-2 gap-2">
@@ -313,7 +311,7 @@ export default function ServicesPage() {
                         key={featureIndex}
                         className="flex items-center space-x-2"
                       >
-                        <Check className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                        <Check className="w-4 h-4 text-white flex-shrink-0" />
                         <span className="text-gray-300 text-sm">{feature}</span>
                       </div>
                     ))}
@@ -321,18 +319,20 @@ export default function ServicesPage() {
                 </div>
 
                 <div>
-                  <h4 className="text-lg font-semibold text-amber-400 mb-3">
+                  <h4 className="text-lg font-semibold text-white mb-3">
                     Technologies:
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {service.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-3 py-1 bg-amber-600/20 text-amber-400 rounded-full text-xs font-medium"
+                        className="px-3 py-1 bg-white/20 text-white rounded-full text-xs font-medium"
                       >
                         {tech}
                       </span>
                     ))}
+                  </div>
+                </div>
                   </div>
                 </div>
               </motion.div>
@@ -379,14 +379,14 @@ export default function ServicesPage() {
                 className="text-center"
               >
                 <div className="flex flex-col items-center mb-6 space-y-4">
-                  <div className="w-20 h-20 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center text-black font-bold text-2xl">
+                  <div className="w-20 h-20 bg-gradient-to-br from-white to-gray-300 rounded-full flex items-center justify-center text-black font-bold text-2xl">
                     {step.step}
                   </div>
-                  <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-amber-700 rounded-full flex items-center justify-center text-black">
+                  <div className="w-12 h-12 bg-gradient-to-br from-gray-200 to-gray-400 rounded-full flex items-center justify-center text-black">
                     {step.icon}
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold text-amber-400 mb-3">
+                <h3 className="text-xl font-semibold text-white mb-3">
                   {step.title}
                 </h3>
                 <p className="text-gray-300 leading-relaxed">
@@ -427,20 +427,20 @@ export default function ServicesPage() {
                 whileHover={{ scale: 1.05 }}
                 className={`glass-effect p-8 rounded-xl relative transition-all duration-300 ${
                   pkg.popular
-                    ? "border-amber-400/50 ring-2 ring-amber-400/30"
-                    : "hover:border-amber-400/50"
+                    ? "border-white/50 ring-2 ring-white/30"
+                    : "hover:border-white/50"
                 }`}
               >
                 {pkg.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-amber-500 to-amber-600 text-black px-4 py-1 rounded-full text-sm font-semibold">
+                    <span className="bg-gradient-to-r from-white to-gray-200 text-black px-4 py-1 rounded-full text-sm font-semibold">
                       Most Popular
                     </span>
                   </div>
                 )}
 
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold text-amber-400 mb-2">
+                  <h3 className="text-2xl font-bold text-white mb-2">
                     {pkg.name}
                   </h3>
                   <div className="text-4xl font-bold gradient-text mb-2">
@@ -455,7 +455,7 @@ export default function ServicesPage() {
                       key={featureIndex}
                       className="flex items-center space-x-3"
                     >
-                      <Check className="w-5 h-5 text-amber-400 flex-shrink-0" />
+                      <Check className="w-5 h-5 text-white flex-shrink-0" />
                       <span className="text-gray-300">{feature}</span>
                     </div>
                   ))}
@@ -465,8 +465,8 @@ export default function ServicesPage() {
                   href="/contact"
                   className={`block w-full text-center py-3 px-6 rounded-full font-semibold transition-all duration-300 ${
                     pkg.popular
-                      ? "bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black"
-                      : "border border-amber-600 text-amber-400 hover:bg-amber-600 hover:text-black"
+                      ? "bg-gradient-to-r from-white to-gray-200 hover:from-gray-200 hover:to-gray-300 text-black"
+                      : "border border-white text-white hover:bg-white hover:text-black"
                   }`}
                 >
                   Get Started
@@ -477,7 +477,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-r from-amber-900/10 via-amber-800/5 to-amber-900/10">
+      <section className="py-20 bg-gradient-to-r from-gray-900/10 via-gray-800/5 to-gray-900/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

@@ -37,9 +37,9 @@ export default function Logo({ size = "md", className = "" }: LogoProps) {
               x2="100%"
               y2="100%"
             >
-              <stop offset="0%" stopColor="#fbbf24" />
-              <stop offset="50%" stopColor="#f59e0b" />
-              <stop offset="100%" stopColor="#d4af37" />
+              <stop offset="0%" stopColor="#ffffff" />
+              <stop offset="50%" stopColor="#f3f4f6" />
+              <stop offset="100%" stopColor="#e5e7eb" />
             </linearGradient>
             <linearGradient
               id="logoGradientDark"
@@ -48,9 +48,9 @@ export default function Logo({ size = "md", className = "" }: LogoProps) {
               x2="100%"
               y2="100%"
             >
-              <stop offset="0%" stopColor="#b8941f" />
-              <stop offset="50%" stopColor="#d97706" />
-              <stop offset="100%" stopColor="#92400e" />
+              <stop offset="0%" stopColor="#d1d5db" />
+              <stop offset="50%" stopColor="#9ca3af" />
+              <stop offset="100%" stopColor="#6b7280" />
             </linearGradient>
           </defs>
 
@@ -89,7 +89,7 @@ export default function Logo({ size = "md", className = "" }: LogoProps) {
               y1="10"
               x2="32"
               y2="54"
-              stroke="#fbbf24"
+              stroke="#ffffff"
               strokeWidth="1"
               strokeLinecap="round"
               initial={{ opacity: 0.25 }}
@@ -100,7 +100,7 @@ export default function Logo({ size = "md", className = "" }: LogoProps) {
             <motion.path
               d="M12 44 L32 54 L52 44 L52 44 L52 32 L52 20 L32 10 L12 20 L12 32 Z"
               fill="none"
-              stroke="#f59e0b"
+              stroke="#ffffff"
               strokeOpacity="0.15"
               strokeWidth="2"
               initial={{ pathLength: 0 }}
@@ -115,7 +115,7 @@ export default function Logo({ size = "md", className = "" }: LogoProps) {
         <span className={`font-bold gradient-text ${currentSize.text}`}>
           Tech Stack
         </span>
-        <span className="text-amber-400 text-sm font-medium tracking-wider uppercase">
+        <span className="text-gray-300 text-sm font-medium tracking-wider uppercase">
           Studio
         </span>
       </div>

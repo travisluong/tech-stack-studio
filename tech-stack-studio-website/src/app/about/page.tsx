@@ -180,12 +180,12 @@ export default function AboutPage() {
               />
 
               <div className="glass-effect p-8 rounded-2xl">
-                <h3 className="text-2xl font-bold text-amber-400 mb-6">
+                <h3 className="text-2xl font-bold text-white mb-6">
                   Why We Do This
                 </h3>
                 <div className="space-y-4 text-gray-300">
                   <div className="flex items-start space-x-3">
-                    <Target className="w-6 h-6 text-amber-400 mt-1 flex-shrink-0" />
+                    <Target className="w-6 h-6 text-white mt-1 flex-shrink-0" />
                     <div>
                       <h4 className="font-semibold mb-2">Mission-Driven</h4>
                       <p>
@@ -195,7 +195,7 @@ export default function AboutPage() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <Award className="w-6 h-6 text-amber-400 mt-1 flex-shrink-0" />
+                    <Award className="w-6 h-6 text-white mt-1 flex-shrink-0" />
                     <div>
                       <h4 className="font-semibold mb-2">Quality-Obsessed</h4>
                       <p>
@@ -205,7 +205,7 @@ export default function AboutPage() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <Lightbulb className="w-6 h-6 text-amber-400 mt-1 flex-shrink-0" />
+                    <Lightbulb className="w-6 h-6 text-white mt-1 flex-shrink-0" />
                     <div>
                       <h4 className="font-semibold mb-2">Always Learning</h4>
                       <p>
@@ -248,14 +248,14 @@ export default function AboutPage() {
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.02 }}
-                className="glass-effect p-6 rounded-xl hover:border-amber-400/50 transition-all duration-300"
+                className="glass-effect p-6 rounded-xl hover:border-white/50 transition-all duration-300"
               >
                 <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center text-black">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-white to-gray-300 rounded-lg flex items-center justify-center text-black">
                     {value.icon}
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-amber-400 mb-3">
+                    <h3 className="text-xl font-semibold text-white mb-3">
                       {value.title}
                     </h3>
                     <p className="text-gray-300 leading-relaxed">
@@ -304,7 +304,7 @@ export default function AboutPage() {
                     <div className="text-4xl font-bold gradient-text mb-2">
                       {item.year}
                     </div>
-                    <h3 className="text-xl font-semibold text-amber-400 mb-3">
+                    <h3 className="text-xl font-semibold text-white mb-3">
                       {item.title}
                     </h3>
                     <p className="text-gray-300 leading-relaxed">
@@ -313,7 +313,7 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <div className="md:w-1/2 flex justify-center">
-                  <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center text-black font-bold text-xl">
+                  <div className="w-16 h-16 bg-gradient-to-br from-white to-gray-300 rounded-full flex items-center justify-center text-black font-bold text-xl">
                     {index + 1}
                   </div>
                 </div>
@@ -323,7 +323,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-r from-amber-900/10 via-amber-800/5 to-amber-900/10">
+      <section className="py-20 bg-gradient-to-r from-gray-900/10 via-gray-800/5 to-gray-900/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -340,7 +340,7 @@ export default function AboutPage() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 glow-effect"
+              className="inline-flex items-center bg-gradient-to-r from-white to-gray-200 hover:from-gray-200 hover:to-gray-300 text-black px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 glow-effect"
             >
               Start Your Project
             </Link>
