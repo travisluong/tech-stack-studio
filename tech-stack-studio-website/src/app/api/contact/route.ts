@@ -5,6 +5,7 @@ import {
   sanitizeFormData,
   checkForSpam,
 } from "@/lib/validation";
+import { verifyRecaptcha } from "@/lib/recaptcha";
 
 export async function POST(request: NextRequest) {
   try {
@@ -15,6 +16,22 @@ export async function POST(request: NextRequest) {
     if (!body.name || !body.email || !body.project || !body.message) {
       return NextResponse.json(
         { success: false, error: "Missing required fields" },
+        { status: 400 }
+      );
+    }
+
+    // Verify reCAPTCHA
+    if (!body.recaptchaToken) {
+      return NextResponse.json(
+        { success: false, error: "reCAPTCHA verification required" },
+        { status: 400 }
+      );
+    }
+
+    const isRecaptchaValid = await verifyRecaptcha(body.recaptchaToken);
+    if (!isRecaptchaValid) {
+      return NextResponse.json(
+        { success: false, error: "reCAPTCHA verification failed" },
         { status: 400 }
       );
     }

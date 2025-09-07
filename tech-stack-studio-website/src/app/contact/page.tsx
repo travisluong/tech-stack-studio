@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { MapPin, Clock, Send, CheckCircle } from "lucide-react";
 import Toast, { ToastType } from "@/components/ui/Toast";
+import ReCaptcha, { ReCaptchaRef } from "@/components/ui/ReCaptcha";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -17,6 +18,8 @@ export default function ContactPage() {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCaptchaRef>(null);
   const [toast, setToast] = useState<{
     type: ToastType;
     message: string;
@@ -33,6 +36,19 @@ export default function ContactPage() {
 
   const hideToast = () => {
     setToast((prev) => ({ ...prev, isVisible: false }));
+  };
+
+  const handleRecaptchaChange = (token: string | null) => {
+    setRecaptchaToken(token);
+  };
+
+  const handleRecaptchaExpired = () => {
+    setRecaptchaToken(null);
+  };
+
+  const handleRecaptchaError = () => {
+    setRecaptchaToken(null);
+    showToast("error", "reCAPTCHA error. Please try again.");
   };
 
   const handleChange = (
@@ -63,12 +79,22 @@ export default function ContactPage() {
         return;
       }
 
+      // Validate reCAPTCHA
+      if (!recaptchaToken) {
+        showToast("error", "Please complete the reCAPTCHA verification.");
+        setIsLoading(false);
+        return;
+      }
+
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          recaptchaToken: recaptchaToken,
+        }),
       });
 
       const result = await response.json();
@@ -81,7 +107,7 @@ export default function ContactPage() {
             "Thank you for your message! We will get back to you within 24 hours."
         );
 
-        // Reset form data
+        // Reset form data and reCAPTCHA
         setFormData({
           name: "",
           email: "",
@@ -90,6 +116,8 @@ export default function ContactPage() {
           message: "",
           project: "",
         });
+        setRecaptchaToken(null);
+        recaptchaRef.current?.reset();
       } else {
         // Handle validation errors
         if (result.errors && Array.isArray(result.errors)) {
@@ -110,6 +138,9 @@ export default function ContactPage() {
         "error",
         "Network error. Please check your connection and try again."
       );
+      // Reset reCAPTCHA on error
+      setRecaptchaToken(null);
+      recaptchaRef.current?.reset();
     } finally {
       setIsLoading(false);
     }
@@ -194,6 +225,8 @@ export default function ContactPage() {
                 message: "",
                 project: "",
               });
+              setRecaptchaToken(null);
+              recaptchaRef.current?.reset();
             }}
             className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black px-8 py-3 rounded-full font-semibold transition-all duration-300"
           >
@@ -415,6 +448,17 @@ export default function ContactPage() {
                     rows={5}
                     className="w-full px-4 py-3 bg-black/50 border border-amber-600/30 rounded-lg text-white placeholder-gray-400 focus:border-amber-400 focus:outline-none transition-colors resize-none"
                     placeholder="Tell us about your project, goals, and requirements..."
+                  />
+                </div>
+
+                <div className="mb-6 flex justify-center">
+                  <ReCaptcha
+                    ref={recaptchaRef}
+                    onChange={handleRecaptchaChange}
+                    onExpired={handleRecaptchaExpired}
+                    onError={handleRecaptchaError}
+                    theme="dark"
+                    size="normal"
                   />
                 </div>
 
