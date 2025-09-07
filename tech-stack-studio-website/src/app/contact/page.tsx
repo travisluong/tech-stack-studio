@@ -262,9 +262,7 @@ export default function ContactPage() {
                       {item.icon}
                     </div>
                     <div>
-                      <h3 className="text-white font-semibold">
-                        {item.title}
-                      </h3>
+                      <h3 className="text-white font-semibold">{item.title}</h3>
                       {item.link ? (
                         <a
                           href={item.link}

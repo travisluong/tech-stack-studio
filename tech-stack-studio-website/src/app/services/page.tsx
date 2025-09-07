@@ -301,38 +301,40 @@ export default function ServicesPage() {
                       {service.description}
                     </p>
 
-                <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-white mb-3">
-                    What&apos;s Included:
-                  </h4>
-                  <div className="grid sm:grid-cols-2 gap-2">
-                    {service.features.map((feature, featureIndex) => (
-                      <div
-                        key={featureIndex}
-                        className="flex items-center space-x-2"
-                      >
-                        <Check className="w-4 h-4 text-white flex-shrink-0" />
-                        <span className="text-gray-300 text-sm">{feature}</span>
+                    <div className="mb-6">
+                      <h4 className="text-lg font-semibold text-white mb-3">
+                        What&apos;s Included:
+                      </h4>
+                      <div className="grid sm:grid-cols-2 gap-2">
+                        {service.features.map((feature, featureIndex) => (
+                          <div
+                            key={featureIndex}
+                            className="flex items-center space-x-2"
+                          >
+                            <Check className="w-4 h-4 text-white flex-shrink-0" />
+                            <span className="text-gray-300 text-sm">
+                              {feature}
+                            </span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                </div>
+                    </div>
 
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-3">
-                    Technologies:
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {service.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-3 py-1 bg-white/20 text-white rounded-full text-xs font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-white mb-3">
+                        Technologies:
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {service.technologies.map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="px-3 py-1 bg-white/20 text-white rounded-full text-xs font-medium"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
