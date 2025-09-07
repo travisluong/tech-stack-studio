@@ -62,34 +62,46 @@ export default function AboutPage() {
 
   const timeline = [
     {
-      year: "2019",
-      title: "The Beginning",
+      year: "2011-2013",
+      title: "The Foundation Years",
       description:
-        "Started as a passion project, building websites for local businesses and learning the craft.",
+        "Started with jQuery animations and WordPress customizations, building dynamic websites with MySQL databases. DreamHost became our reliable hosting partner as we learned the fundamentals of web development.",
     },
     {
-      year: "2020",
-      title: "Going Full-Stack",
+      year: "2014",
+      title: "Single-Page Revolution",
       description:
-        "Expanded into backend development, APIs, and database architecture to offer complete solutions.",
+        "Embraced AngularJS to create rich, interactive applications. Discovered the power of Ruby on Rails for rapid backend development and migrated to PostgreSQL for more robust data management on Heroku.",
     },
     {
-      year: "2021",
-      title: "Creative Evolution",
+      year: "2015-2018",
+      title: "Full-Stack Mastery",
       description:
-        "Merged technical skills with artistic vision, focusing on user experience and beautiful design.",
+        "Refined our AngularJS expertise while exploring Python and Django for backend development. This era was about mastering the art of building complete web applications from database to user interface.",
     },
     {
-      year: "2023",
-      title: "Modern Era",
+      year: "2018-2019",
+      title: "Mobile & Modern APIs",
       description:
-        "Embraced cutting-edge technologies like Next.js, TypeScript, and cloud architecture.",
+        "Ventured into iOS development with Swift while building lightning-fast APIs using Node.js and Koa. This period expanded our capabilities beyond the web into native mobile experiences.",
+    },
+    {
+      year: "2019-2021",
+      title: "Cloud-Native Evolution",
+      description:
+        "Transitioned to React for modern frontend development and Express.js for robust backends. Embraced containerization with Docker and Kubernetes, scaling applications across Google Cloud Platform and Azure.",
+    },
+    {
+      year: "2021-Present",
+      title: "Enterprise & Performance",
+      description:
+        "Diversified into enterprise technologies with Scala + PlayFramework, Python + FastAPI, and Java + SpringBoot. Mastered AWS cloud architecture while delivering high-performance solutions for demanding clients.",
     },
     {
       year: "2025",
-      title: "Present Day",
+      title: "Modern Excellence",
       description:
-        "Now crafting exceptional web experiences for clients who demand both beauty and performance.",
+        "Today we craft exceptional experiences with Next.js, React, and TypeScript while integrating cutting-edge AI technologies. Our tech stack represents years of evolution, choosing the right tools for each project while maintaining our commitment to quality and innovation.",
     },
   ];
 

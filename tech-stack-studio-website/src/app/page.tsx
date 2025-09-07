@@ -12,7 +12,7 @@ export default function Home() {
   const stats = [
     { number: "50+", label: "Projects Delivered" },
     { number: "100%", label: "Client Satisfaction" },
-    { number: "5+", label: "Years Experience" },
+    { number: "15+", label: "Years Experience" },
     { number: "24/7", label: "Support" },
   ];
 
