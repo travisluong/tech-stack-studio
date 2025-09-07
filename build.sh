@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source ~/.nvm/nvm.sh
-npm install dotenv
+npm install
 cd tech-stack-studio-website
 npm install
 npm run build
