@@ -1,90 +1,176 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { MapPin, Clock, Send, CheckCircle } from "lucide-react";
+import Toast, { ToastType } from "@/components/ui/Toast";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    budget: '',
-    message: '',
-    project: ''
+    name: "",
+    email: "",
+    company: "",
+    budget: "",
+    message: "",
+    project: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [toast, setToast] = useState<{
+    type: ToastType;
+    message: string;
+    isVisible: boolean;
+  }>({
+    type: "success",
+    message: "",
+    isVisible: false,
+  });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const showToast = (type: ToastType, message: string) => {
+    setToast({ type, message, isVisible: true });
+  };
+
+  const hideToast = () => {
+    setToast((prev) => ({ ...prev, isVisible: false }));
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsLoading(false);
-    setIsSubmitted(true);
+
+    try {
+      // Client-side validation
+      if (
+        !formData.name.trim() ||
+        !formData.email.trim() ||
+        !formData.project.trim() ||
+        !formData.message.trim()
+      ) {
+        showToast("error", "Please fill in all required fields.");
+        setIsLoading(false);
+        return;
+      }
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setIsSubmitted(true);
+        showToast(
+          "success",
+          result.message ||
+            "Thank you for your message! We will get back to you within 24 hours."
+        );
+
+        // Reset form data
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          budget: "",
+          message: "",
+          project: "",
+        });
+      } else {
+        // Handle validation errors
+        if (result.errors && Array.isArray(result.errors)) {
+          const errorMessages = result.errors
+            .map((error: { field: string; message: string }) => error.message)
+            .join(", ");
+          showToast("error", `Please fix the following: ${errorMessages}`);
+        } else {
+          showToast(
+            "error",
+            result.error || "Something went wrong. Please try again."
+          );
+        }
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      showToast(
+        "error",
+        "Network error. Please check your connection and try again."
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const contactInfo = [
-    {
-      icon: <Mail className="w-6 h-6" />,
-      title: 'Email',
-      info: 'hello@techstackstudio.com',
-      link: 'mailto:hello@techstackstudio.com'
-    },
-    {
-      icon: <Phone className="w-6 h-6" />,
-      title: 'Phone',
-      info: '+1 (555) 123-4567',
-      link: 'tel:+15551234567'
-    },
+    // {
+    //   icon: <Mail className="w-6 h-6" />,
+    //   title: 'Email',
+    //   info: 'hello@techstackstudio.com',
+    //   link: 'mailto:hello@techstackstudio.com'
+    // },
+    // {
+    //   icon: <Phone className="w-6 h-6" />,
+    //   title: 'Phone',
+    //   info: '+1 (555) 123-4567',
+    //   link: 'tel:+15551234567'
+    // },
     {
       icon: <MapPin className="w-6 h-6" />,
-      title: 'Location',
-      info: 'Remote & Global',
-      link: null
+      title: "Location",
+      info: "Remote & Global",
+      link: null,
     },
     {
       icon: <Clock className="w-6 h-6" />,
-      title: 'Response Time',
-      info: 'Within 24 hours',
-      link: null
-    }
+      title: "Response Time",
+      info: "Within 24 hours",
+      link: null,
+    },
   ];
 
   const projectTypes = [
-    'New Website',
-    'Web Application',
-    'E-commerce',
-    'API Development',
-    'Mobile App',
-    'Redesign',
-    'Maintenance',
-    'Other'
+    "New Website",
+    "Web Application",
+    "E-commerce",
+    "API Development",
+    "Mobile App",
+    "Redesign",
+    "Maintenance",
+    "Other",
   ];
 
   const budgetRanges = [
-    'Under $5,000',
-    '$5,000 - $10,000',
-    '$10,000 - $25,000',
-    '$25,000 - $50,000',
-    '$50,000+',
-    'Let\'s discuss'
+    "Under $5,000",
+    "$5,000 - $10,000",
+    "$10,000 - $25,000",
+    "$25,000 - $50,000",
+    "$50,000+",
+    "Let's discuss",
   ];
 
   if (isSubmitted) {
     return (
       <div className="min-h-screen vintage-texture flex items-center justify-center">
+        <Toast
+          type={toast.type}
+          message={toast.message}
+          isVisible={toast.isVisible}
+          onClose={hideToast}
+        />
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -94,18 +180,19 @@ export default function ContactPage() {
           <CheckCircle className="w-20 h-20 text-amber-400 mx-auto mb-6" />
           <h1 className="text-4xl font-bold gradient-text mb-4">Thank You!</h1>
           <p className="text-xl text-gray-300 mb-8 max-w-md">
-            We&apos;ve received your message and will get back to you within 24 hours.
+            We&apos;ve received your message and will get back to you within 24
+            hours.
           </p>
           <button
             onClick={() => {
               setIsSubmitted(false);
               setFormData({
-                name: '',
-                email: '',
-                company: '',
-                budget: '',
-                message: '',
-                project: ''
+                name: "",
+                email: "",
+                company: "",
+                budget: "",
+                message: "",
+                project: "",
               });
             }}
             className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black px-8 py-3 rounded-full font-semibold transition-all duration-300"
@@ -119,6 +206,12 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen vintage-texture">
+      <Toast
+        type={toast.type}
+        message={toast.message}
+        isVisible={toast.isVisible}
+        onClose={hideToast}
+      />
       <section className="relative py-20 bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <Image
@@ -128,7 +221,7 @@ export default function ContactPage() {
             className="object-cover"
           />
         </div>
-        
+
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -140,8 +233,9 @@ export default function ContactPage() {
               Let&apos;s <span className="gradient-text">Connect</span>
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Ready to bring your vision to life? Get in touch with us to discuss your project 
-              and discover how we can help you achieve your goals.
+              Ready to bring your vision to life? Get in touch with us to
+              discuss your project and discover how we can help you achieve your
+              goals.
             </p>
           </motion.div>
 
@@ -168,7 +262,9 @@ export default function ContactPage() {
                       {item.icon}
                     </div>
                     <div>
-                      <h3 className="text-amber-400 font-semibold">{item.title}</h3>
+                      <h3 className="text-amber-400 font-semibold">
+                        {item.title}
+                      </h3>
                       {item.link ? (
                         <a
                           href={item.link}
@@ -214,7 +310,10 @@ export default function ContactPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <form onSubmit={handleSubmit} className="glass-effect p-8 rounded-xl">
+              <form
+                onSubmit={handleSubmit}
+                className="glass-effect p-8 rounded-xl"
+              >
                 <h3 className="text-2xl font-bold gradient-text mb-6">
                   Start Your Project
                 </h3>
@@ -278,7 +377,9 @@ export default function ContactPage() {
                     >
                       <option value="">Select project type</option>
                       {projectTypes.map((type) => (
-                        <option key={type} value={type}>{type}</option>
+                        <option key={type} value={type}>
+                          {type}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -294,7 +395,9 @@ export default function ContactPage() {
                     >
                       <option value="">Select budget range</option>
                       {budgetRanges.map((range) => (
-                        <option key={range} value={range}>{range}</option>
+                        <option key={range} value={range}>
+                          {range}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -350,7 +453,7 @@ export default function ContactPage() {
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               <span className="gradient-text">Frequently Asked Questions</span>
             </h2>
-            
+
             <div className="max-w-3xl mx-auto text-left">
               <div className="space-y-6">
                 <motion.div
@@ -364,8 +467,10 @@ export default function ContactPage() {
                     How long does a typical project take?
                   </h3>
                   <p className="text-gray-300">
-                    Project timelines vary based on complexity. Simple websites take 2-4 weeks, 
-                    while full web applications can take 6-12 weeks. We&apos;ll provide a detailed timeline during our initial consultation.
+                    Project timelines vary based on complexity. Simple websites
+                    take 2-4 weeks, while full web applications can take 6-12
+                    weeks. We&apos;ll provide a detailed timeline during our
+                    initial consultation.
                   </p>
                 </motion.div>
 
@@ -380,8 +485,9 @@ export default function ContactPage() {
                     Do you provide ongoing support after launch?
                   </h3>
                   <p className="text-gray-300">
-                    Yes! All our packages include support and maintenance. We&apos;re here to help with updates, 
-                    bug fixes, and feature additions long after your project goes live.
+                    Yes! All our packages include support and maintenance.
+                    We&apos;re here to help with updates, bug fixes, and feature
+                    additions long after your project goes live.
                   </p>
                 </motion.div>
 
@@ -396,8 +502,9 @@ export default function ContactPage() {
                     Can you work with our existing team?
                   </h3>
                   <p className="text-gray-300">
-                    Absolutely! We love collaborating with in-house teams and can integrate seamlessly 
-                    with your existing workflows and development processes.
+                    Absolutely! We love collaborating with in-house teams and
+                    can integrate seamlessly with your existing workflows and
+                    development processes.
                   </p>
                 </motion.div>
               </div>
