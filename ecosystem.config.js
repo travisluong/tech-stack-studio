@@ -2,14 +2,6 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-const buildScript = `source ~/.nvm/nvm.sh &&
-npm install &&
-cd tech-stack-studio-website &&
-npm install **
-npm run build &&
-cd .. &&
-pm2 reload ecosystem.config.js`;
-
 module.exports = {
   apps: [
     {
@@ -32,7 +24,7 @@ module.exports = {
       repo: process.env.GIT_REPOSITORY,
       path: process.env.DESTINATION_PATH,
       "pre-deploy-local": "",
-      "post-deploy": buildScript,
+      "post-deploy": "./build.sh",
       "pre-setup": "",
     },
   },
