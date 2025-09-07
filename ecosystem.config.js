@@ -7,7 +7,7 @@ module.exports = {
     {
       name: "tech-stack-studio-website",
       script: "node_modules/next/dist/bin/next",
-      args: "start",
+      args: "start -p 3004",
       cwd: "./tech-stack-studio-website",
       env_production: {
         NODE_ENV: "production",
