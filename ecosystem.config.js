@@ -11,7 +11,7 @@ module.exports = {
       cwd: "./tech-stack-studio-website",
       env_production: {
         NODE_ENV: "production",
-        PORT: 3000,
+        PORT: 3004,
       },
     },
   ],
