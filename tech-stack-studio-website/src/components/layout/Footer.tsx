@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { Github, Linkedin, Mail, Phone } from 'lucide-react';
-import Logo from '@/components/ui/Logo';
+import Link from "next/link";
+import { Github, Linkedin, Mail, Phone } from "lucide-react";
+import Logo from "@/components/ui/Logo";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -14,10 +14,11 @@ export default function Footer() {
               <Logo size="sm" />
             </Link>
             <p className="text-gray-400 mb-6 max-w-md">
-              Crafting exceptional full-stack web experiences with modern technology and creative vision. 
-              Where technical expertise meets artistic innovation.
+              Crafting exceptional full-stack web experiences with modern
+              technology and creative vision. Where technical expertise meets
+              artistic innovation.
             </p>
-            <div className="flex space-x-4">
+            {/* <div className="flex space-x-4">
               <a
                 href="#"
                 className="text-gray-400 hover:text-amber-500 transition-colors duration-300"
@@ -42,25 +43,74 @@ export default function Footer() {
               >
                 <Phone size={20} />
               </a>
-            </div>
+            </div> */}
           </div>
 
           <div>
             <h3 className="text-amber-500 font-semibold mb-4">Services</h3>
             <ul className="space-y-2">
-              <li><Link href="/services" className="text-gray-400 hover:text-amber-500 transition-colors duration-300">Full-Stack Development</Link></li>
-              <li><Link href="/services" className="text-gray-400 hover:text-amber-500 transition-colors duration-300">UI/UX Design</Link></li>
-              <li><Link href="/services" className="text-gray-400 hover:text-amber-500 transition-colors duration-300">API Development</Link></li>
-              <li><Link href="/services" className="text-gray-400 hover:text-amber-500 transition-colors duration-300">Cloud Solutions</Link></li>
+              <li>
+                <Link
+                  href="/services"
+                  className="text-gray-400 hover:text-amber-500 transition-colors duration-300"
+                >
+                  Full-Stack Development
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services"
+                  className="text-gray-400 hover:text-amber-500 transition-colors duration-300"
+                >
+                  UI/UX Design
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services"
+                  className="text-gray-400 hover:text-amber-500 transition-colors duration-300"
+                >
+                  API Development
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services"
+                  className="text-gray-400 hover:text-amber-500 transition-colors duration-300"
+                >
+                  Cloud Solutions
+                </Link>
+              </li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-amber-500 font-semibold mb-4">Company</h3>
             <ul className="space-y-2">
-              <li><Link href="/about" className="text-gray-400 hover:text-amber-500 transition-colors duration-300">About Us</Link></li>
-              <li><Link href="/contact" className="text-gray-400 hover:text-amber-500 transition-colors duration-300">Contact</Link></li>
-              <li><Link href="/services" className="text-gray-400 hover:text-amber-500 transition-colors duration-300">Our Process</Link></li>
+              <li>
+                <Link
+                  href="/about"
+                  className="text-gray-400 hover:text-amber-500 transition-colors duration-300"
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-gray-400 hover:text-amber-500 transition-colors duration-300"
+                >
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services"
+                  className="text-gray-400 hover:text-amber-500 transition-colors duration-300"
+                >
+                  Our Process
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
