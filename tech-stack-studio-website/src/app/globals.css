@@ -96,3 +96,27 @@ body {
 .glow-effect {
   animation: glow 3s ease-in-out infinite;
 }
+
+/* Team card video optimizations */
+.team-video {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.team-card-image {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Ensure smooth aspect ratio for team cards */
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+@media (max-width: 768px) {
+  .team-card-container {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}

@@ -26,7 +26,7 @@ export default function TeamGrid() {
         </motion.div>
 
         {/* Team Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto">
           {teamMembers.map((member, index) => (
             <TeamCard key={member.id} member={member} index={index} />
           ))}

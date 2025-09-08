@@ -20,7 +20,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: "alex-meridian",
     name: "Alex Meridian",
-    title: "Founder & Chief Technology Architect",
+    title: "Chief Technology Architect",
     department: "Leadership",
     bio: "Visionary technologist with 15+ years pioneering next-generation web solutions. Alex founded Tech Stack Studio with a mission to bridge the gap between human creativity and technological precision.",
     expandedBio:

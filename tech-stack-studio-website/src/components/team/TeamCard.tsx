@@ -38,12 +38,12 @@ export default function TeamCard({ member, index }: TeamCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
       viewport={{ once: true }}
-      whileHover={{ scale: 1.02 }}
-      className="glass-effect rounded-xl overflow-hidden transition-all duration-300 hover:border-white/50"
+      whileHover={{ scale: 1.0 }}
+      className="glass-effect rounded-xl overflow-hidden transition-all duration-300 hover:border-white/50 team-card-container"
     >
       {/* Profile Image */}
       <div
-        className="relative h-64 bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden"
+        className="relative aspect-square bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -52,18 +52,23 @@ export default function TeamCard({ member, index }: TeamCardProps) {
           src={member.image}
           alt={`${member.name} - ${member.title}`}
           fill
-          className="object-cover transition-opacity duration-300"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className={`object-cover transition-opacity duration-300 team-card-image ${
+            isHovered ? "opacity-0" : "opacity-100"
+          }`}
+          sizes="(max-width: 768px) 400px, (max-width: 1200px) 50vw, 33vw"
         />
 
         {/* Video on hover */}
         <video
           ref={videoRef}
           src={member.video}
-          className="absolute inset-0 w-full h-full object-cover opacity-0 hover:opacity-100 transition-opacity duration-300"
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 team-video ${
+            isHovered ? "opacity-100" : "opacity-0"
+          }`}
           muted
           loop
           playsInline
+          preload="metadata"
         />
 
         {/* Department Badge */}
@@ -72,6 +77,13 @@ export default function TeamCard({ member, index }: TeamCardProps) {
             {member.department}
           </span>
         </div>
+
+        {/* Hover Overlay */}
+        <div
+          className={`absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent transition-opacity duration-300 ${
+            isHovered ? "opacity-100" : "opacity-0"
+          }`}
+        />
       </div>
 
       {/* Content */}
