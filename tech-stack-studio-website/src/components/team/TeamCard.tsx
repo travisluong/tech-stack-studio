@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
@@ -14,7 +14,16 @@ interface TeamCardProps {
 export default function TeamCard({ member, index }: TeamCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Preload video after image loads
+  useEffect(() => {
+    if (imageLoaded && videoRef.current) {
+      // Preload video by setting src and loading metadata
+      videoRef.current.load();
+    }
+  }, [imageLoaded]);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -56,9 +65,11 @@ export default function TeamCard({ member, index }: TeamCardProps) {
             isHovered ? "opacity-0" : "opacity-100"
           }`}
           sizes="(max-width: 768px) 400px, (max-width: 1200px) 50vw, 33vw"
+          priority={index < 3} // Prioritize first 3 images
+          onLoad={() => setImageLoaded(true)}
         />
 
-        {/* Video on hover */}
+        {/* Video on hover - preload after image loads */}
         <video
           ref={videoRef}
           src={member.video}
@@ -68,7 +79,7 @@ export default function TeamCard({ member, index }: TeamCardProps) {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
         />
 
         {/* Department Badge */}
