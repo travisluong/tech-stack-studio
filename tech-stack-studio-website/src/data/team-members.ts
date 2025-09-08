@@ -11,6 +11,7 @@ export interface TeamMember {
   responseTime: string;
   availability: string;
   image: string;
+  video: string;
   midjourneyPrompt: string;
   specialties: string[];
 }
@@ -36,7 +37,8 @@ export const teamMembers: TeamMember[] = [
     experience: "15+ years",
     responseTime: "Typically responds within 0.2 seconds",
     availability: "Available 24/7/365",
-    image: "/team/alex-meridian.webp",
+    image: "/team/alex-meridian.png",
+    video: "/team/alex-meridian.mp4",
     midjourneyPrompt:
       "Professional anime-style portrait of a confident tech CEO, silver-rimmed glasses, sophisticated dark suit, subtle digital glow in eyes, modern minimalist office background, clean geometric lighting, premium corporate aesthetic, detailed facial features, 4K quality --ar 1:1 --style anime --niji 6",
     specialties: ["Vision", "Strategy", "Leadership"],
@@ -64,7 +66,8 @@ export const teamMembers: TeamMember[] = [
     experience: "8+ years",
     responseTime: "Typically responds within 0.1 seconds",
     availability: "Available 24/7/365",
-    image: "/team/zara-codewright.webp",
+    image: "/team/zara-codewright.png",
+    video: "/team/zara-codewright.mp4",
     midjourneyPrompt:
       "Anime-style female programmer with confident expression, stylish coding setup with multiple monitors displaying code, wearing casual tech hoodie, modern workspace with RGB lighting, digital circuit patterns subtly reflected in glasses, vibrant colors, professional yet approachable --ar 1:1 --style anime --niji 6",
     specialties: ["Full Stack", "React", "Node.js"],
@@ -92,7 +95,8 @@ export const teamMembers: TeamMember[] = [
     experience: "10+ years",
     responseTime: "Typically responds within 0.05 seconds",
     availability: "Available 24/7/365",
-    image: "/team/kai-systemforge.webp",
+    image: "/team/kai-systemforge.png",
+    video: "/team/kai-systemforge.mp4",
     midjourneyPrompt:
       "Technical anime character with intense focused expression, surrounded by holographic server diagrams and network topology displays, wearing industrial-style clothing with tech accessories, cyberpunk aesthetic with blue-green lighting, multiple screens showing system metrics, highly detailed technical environment --ar 1:1 --style anime --niji 6",
     specialties: ["DevOps", "AWS", "Kubernetes"],
@@ -118,7 +122,8 @@ export const teamMembers: TeamMember[] = [
     experience: "7+ years",
     responseTime: "Typically responds within 0.3 seconds",
     availability: "Available 24/7/365",
-    image: "/team/river-pixelhart.webp",
+    image: "/team/river-pixelhart.png",
+    video: "/team/river-pixelhart.mp4",
     midjourneyPrompt:
       "Hipster anime designer with artistic flair, trendy thick-framed glasses, perfectly styled hair, creative workspace with design tablets and colorful mood boards, wearing fashionable casual attire, surrounded by floating UI mockups and color palettes, warm artistic lighting, creative studio aesthetic --ar 1:1 --style anime --niji 6",
     specialties: ["UX/UI", "Design Systems", "User Research"],
@@ -146,7 +151,8 @@ export const teamMembers: TeamMember[] = [
     experience: "6+ years",
     responseTime: "Typically responds within 0.2 seconds",
     availability: "Available 24/7/365",
-    image: "/team/nova-touchstone.webp",
+    image: "/team/nova-touchstone.png",
+    video: "/team/nova-touchstone.mp4",
     midjourneyPrompt:
       "Modern anime character with sleek smartphone displaying app interfaces, wearing contemporary tech-casual outfit, surrounded by floating mobile device mockups and app icons, clean minimalist workspace with wireless charging pads and latest devices, soft blue-white lighting, innovation-focused environment --ar 1:1 --style anime --niji 6",
     specialties: ["Mobile", "React Native", "iOS/Android"],
@@ -173,7 +179,8 @@ export const teamMembers: TeamMember[] = [
     experience: "12+ years",
     responseTime: "Typically responds within 0.1 seconds",
     availability: "Available 24/7/365",
-    image: "/team/atlas-designcore.webp",
+    image: "/team/atlas-designcore.png",
+    video: "/team/atlas-designcore.mp4",
     midjourneyPrompt:
       "Sophisticated anime architect character with commanding presence, surrounded by 3D holographic system diagrams and database schemas, wearing professional attire with subtle tech accessories, complex technical blueprints floating in background, authoritative pose, high-tech conference room setting --ar 1:1 --style anime --niji 6",
     specialties: ["System Architecture", "Scalability", "Performance"],
@@ -201,7 +208,8 @@ export const teamMembers: TeamMember[] = [
     experience: "9+ years",
     responseTime: "Typically responds within 0.08 seconds",
     availability: "Available 24/7/365",
-    image: "/team/sage-neuralpath.webp",
+    image: "/team/sage-neuralpath.png",
+    video: "/team/sage-neuralpath.mp4",
     midjourneyPrompt:
       "Futuristic anime AI researcher with piercing intelligent eyes, surrounded by floating neural network visualizations and data streams, wearing advanced tech clothing with subtle cybernetic details, laboratory setting with quantum computers and AI displays, ethereal blue-purple lighting, mysterious yet approachable expression --ar 1:1 --style anime --niji 6",
     specialties: ["AI/ML", "Neural Networks", "Deep Learning"],

@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { TeamMember } from "@/data/team-members";
 
@@ -12,6 +13,24 @@ interface TeamCardProps {
 
 export default function TeamCard({ member, index }: TeamCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().catch(console.error);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  };
 
   return (
     <motion.div
@@ -23,19 +42,31 @@ export default function TeamCard({ member, index }: TeamCardProps) {
       className="glass-effect rounded-xl overflow-hidden transition-all duration-300 hover:border-white/50"
     >
       {/* Profile Image */}
-      <div className="relative h-64 bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-32 h-32 bg-gradient-to-br from-white to-gray-300 rounded-full flex items-center justify-center">
-            <span className="text-4xl font-bold text-black">
-              {member.name
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
-            </span>
-          </div>
-        </div>
+      <div
+        className="relative h-64 bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {/* Static Image */}
+        <Image
+          src={member.image}
+          alt={`${member.name} - ${member.title}`}
+          fill
+          className="object-cover transition-opacity duration-300"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
 
-        {/* Placeholder for future profile image */}
+        {/* Video on hover */}
+        <video
+          ref={videoRef}
+          src={member.video}
+          className="absolute inset-0 w-full h-full object-cover opacity-0 hover:opacity-100 transition-opacity duration-300"
+          muted
+          loop
+          playsInline
+        />
+
+        {/* Department Badge */}
         <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1">
           <span className="text-white text-xs font-medium">
             {member.department}
