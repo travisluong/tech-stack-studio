@@ -23,13 +23,13 @@ export default function TeamCard({ member, index }: TeamCardProps) {
   // Check if device is mobile
   useEffect(() => {
     const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
+      setIsMobile(window.innerWidth < 768 || "ontouchstart" in window);
     };
-    
+
     checkIsMobile();
-    window.addEventListener('resize', checkIsMobile);
-    
-    return () => window.removeEventListener('resize', checkIsMobile);
+    window.addEventListener("resize", checkIsMobile);
+
+    return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
 
   // Preload video after image loads
@@ -107,9 +107,9 @@ export default function TeamCard({ member, index }: TeamCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
-      whileInView={{ 
-        opacity: 1, 
-        y: 0 
+      whileInView={{
+        opacity: 1,
+        y: 0,
       }}
       onViewportEnter={() => setIsInView(true)}
       onViewportLeave={() => setIsInView(false)}
@@ -130,7 +130,9 @@ export default function TeamCard({ member, index }: TeamCardProps) {
           alt={`${member.name} - ${member.title}`}
           fill
           className={`object-cover transition-opacity duration-300 team-card-image ${
-            (isMobile && isInView) || (!isMobile && isHovered) ? "opacity-0" : "opacity-100"
+            (isMobile && isInView) || (!isMobile && isHovered)
+              ? "opacity-0"
+              : "opacity-100"
           }`}
           sizes="(max-width: 768px) 400px, (max-width: 1200px) 50vw, 33vw"
           priority={index < 3} // Prioritize first 3 images
@@ -142,7 +144,9 @@ export default function TeamCard({ member, index }: TeamCardProps) {
           ref={videoRef}
           src={member.video}
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 team-video ${
-            (isMobile && isInView) || (!isMobile && isHovered) ? "opacity-100" : "opacity-0"
+            (isMobile && isInView) || (!isMobile && isHovered)
+              ? "opacity-100"
+              : "opacity-0"
           }`}
           muted
           loop
