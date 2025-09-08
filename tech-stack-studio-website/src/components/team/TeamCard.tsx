@@ -15,8 +15,22 @@ export default function TeamCard({ member, index }: TeamCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isInView, setIsInView] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const playPromiseRef = useRef<Promise<void> | null>(null);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
+    };
+    
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
 
   // Preload video after image loads
   useEffect(() => {
@@ -26,44 +40,81 @@ export default function TeamCard({ member, index }: TeamCardProps) {
     }
   }, [imageLoaded]);
 
+  // Handle video playback based on mobile/desktop and view state
+  useEffect(() => {
+    if (videoRef.current && imageLoaded) {
+      if (isMobile && isInView) {
+        // On mobile, play when in view
+        videoRef.current.currentTime = 0;
+        playPromiseRef.current = videoRef.current.play();
+        playPromiseRef.current?.catch(console.error);
+      } else if (isMobile && !isInView) {
+        // On mobile, pause when out of view
+        if (playPromiseRef.current) {
+          playPromiseRef.current
+            .then(() => {
+              if (videoRef.current) {
+                videoRef.current.pause();
+                videoRef.current.currentTime = 0;
+              }
+            })
+            .catch(() => {});
+        } else {
+          videoRef.current.pause();
+          videoRef.current.currentTime = 0;
+        }
+        playPromiseRef.current = null;
+      }
+    }
+  }, [isMobile, isInView, imageLoaded]);
+
   const handleMouseEnter = () => {
-    setIsHovered(true);
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-      playPromiseRef.current = videoRef.current.play();
-      playPromiseRef.current?.catch(console.error);
+    if (!isMobile) {
+      setIsHovered(true);
+      if (videoRef.current) {
+        videoRef.current.currentTime = 0;
+        playPromiseRef.current = videoRef.current.play();
+        playPromiseRef.current?.catch(console.error);
+      }
     }
   };
 
   const handleMouseLeave = () => {
-    setIsHovered(false);
-    if (videoRef.current) {
-      // Wait for play promise to resolve before pausing
-      if (playPromiseRef.current) {
-        playPromiseRef.current
-          .then(() => {
-            if (videoRef.current && !isHovered) {
-              videoRef.current.pause();
-              videoRef.current.currentTime = 0;
-            }
-          })
-          .catch(() => {
-            // Play was already interrupted, no need to pause
-          });
-      } else {
-        videoRef.current.pause();
-        videoRef.current.currentTime = 0;
+    if (!isMobile) {
+      setIsHovered(false);
+      if (videoRef.current) {
+        // Wait for play promise to resolve before pausing
+        if (playPromiseRef.current) {
+          playPromiseRef.current
+            .then(() => {
+              if (videoRef.current && !isHovered) {
+                videoRef.current.pause();
+                videoRef.current.currentTime = 0;
+              }
+            })
+            .catch(() => {
+              // Play was already interrupted, no need to pause
+            });
+        } else {
+          videoRef.current.pause();
+          videoRef.current.currentTime = 0;
+        }
+        playPromiseRef.current = null;
       }
-      playPromiseRef.current = null;
     }
   };
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      whileInView={{ 
+        opacity: 1, 
+        y: 0 
+      }}
+      onViewportEnter={() => setIsInView(true)}
+      onViewportLeave={() => setIsInView(false)}
       transition={{ duration: 0.8, delay: index * 0.1 }}
-      viewport={{ once: true }}
+      viewport={{ once: false, amount: 0.3 }}
       whileHover={{ scale: 1.0 }}
       className="glass-effect rounded-xl overflow-hidden transition-all duration-300 hover:border-white/50 team-card-container"
     >
@@ -79,19 +130,19 @@ export default function TeamCard({ member, index }: TeamCardProps) {
           alt={`${member.name} - ${member.title}`}
           fill
           className={`object-cover transition-opacity duration-300 team-card-image ${
-            isHovered ? "opacity-0" : "opacity-100"
+            (isMobile && isInView) || (!isMobile && isHovered) ? "opacity-0" : "opacity-100"
           }`}
           sizes="(max-width: 768px) 400px, (max-width: 1200px) 50vw, 33vw"
           priority={index < 3} // Prioritize first 3 images
           onLoad={() => setImageLoaded(true)}
         />
 
-        {/* Video on hover - preload after image loads */}
+        {/* Video on hover/in-view - preload after image loads */}
         <video
           ref={videoRef}
           src={member.video}
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 team-video ${
-            isHovered ? "opacity-100" : "opacity-0"
+            (isMobile && isInView) || (!isMobile && isHovered) ? "opacity-100" : "opacity-0"
           }`}
           muted
           loop
