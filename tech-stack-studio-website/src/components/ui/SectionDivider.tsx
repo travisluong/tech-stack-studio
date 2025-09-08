@@ -20,7 +20,7 @@ export default function SectionDivider({
     >
       <div className="absolute inset-0 w-full h-full">
         <Image
-          src="/uploads/Geometric_line_patterns_in_golden_amber_color_art_fe3cbeb1-6c4e-4499-8872-856cb3c2008f_1.png"
+          src="/uploads/media/Geometric_line_patterns_in_golden_amber_color_art_fe3cbeb1-6c4e-4499-8872-856cb3c2008f_1.png"
           alt="Decorative pattern"
           fill
           style={{ objectFit: "cover", objectPosition: "top" }}

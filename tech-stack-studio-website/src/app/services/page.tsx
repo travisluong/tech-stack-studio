@@ -236,7 +236,7 @@ export default function ServicesPage() {
       <section className="relative py-20 bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <Image
-            src="/uploads/Abstract_technology_and_development_themed_images_32623f16-6856-47c1-b8f0-c58ca4d209fe_2.png"
+            src="/uploads/media/Abstract_technology_and_development_themed_images_32623f16-6856-47c1-b8f0-c58ca4d209fe_2.png"
             alt="Technology background"
             fill
             className="object-cover"
@@ -268,7 +268,7 @@ export default function ServicesPage() {
               className="relative"
             >
               <Image
-                src="/uploads/Minimalist_tech_icons_in_golden_amber_color_vinta_8c60633d-9243-4dbc-8316-927b1631b158_2.png"
+                src="/uploads/media/Minimalist_tech_icons_in_golden_amber_color_vinta_8c60633d-9243-4dbc-8316-927b1631b158_2.png"
                 alt="Technology stack icons"
                 width={800}
                 height={200}
@@ -346,7 +346,7 @@ export default function ServicesPage() {
       <section className="relative py-20 bg-gradient-to-b from-gray-900 to-black overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <Image
-            src="/uploads/Vintage_technical_diagram_showing_workflow_proces_a52a9a86-ceb4-45d6-a032-8ce1344f22a2_0.png"
+            src="/uploads/media/Vintage_technical_diagram_showing_workflow_proces_a52a9a86-ceb4-45d6-a032-8ce1344f22a2_0.png"
             alt="Technical workflow diagram"
             fill
             className="object-cover"

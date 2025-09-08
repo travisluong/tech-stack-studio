@@ -35,7 +35,7 @@ export default function TeamPage() {
       <section className="relative py-20 bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <Image
-            src="/uploads/Abstract_digital_technology_background_with_vinta_13ea582c-2df9-451b-beec-82a23a390f19_1.png"
+            src="/uploads/media/Abstract_digital_technology_background_with_vinta_13ea582c-2df9-451b-beec-82a23a390f19_1.png"
             alt="Abstract digital technology background"
             fill
             className="object-cover"

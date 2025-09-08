@@ -48,7 +48,7 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/uploads/Abstract_digital_technology_background_with_vinta_13ea582c-2df9-451b-beec-82a23a390f19_1.png"
+            src="/uploads/media/Abstract_digital_technology_background_with_vinta_13ea582c-2df9-451b-beec-82a23a390f19_1.png"
             alt="Digital technology background"
             fill
             className="object-cover opacity-40"
@@ -142,7 +142,7 @@ export default function Home() {
       <section className="relative py-20 bg-gradient-to-b from-black to-gray-900 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <Image
-            src="/uploads/Geometric_line_patterns_in_golden_amber_color_art_fe3cbeb1-6c4e-4499-8872-856cb3c2008f_1.png"
+            src="/uploads/media/Geometric_line_patterns_in_golden_amber_color_art_fe3cbeb1-6c4e-4499-8872-856cb3c2008f_1.png"
             alt="Decorative pattern"
             fill
             className="object-cover"
@@ -176,7 +176,7 @@ export default function Home() {
               className="relative"
             >
               <Image
-                src="/uploads/Vintage_photography_style_image_of_a_modern_creat_90255fe6-30f1-4359-a2a8-2ab30d597862_0.png"
+                src="/uploads/media/Vintage_photography_style_image_of_a_modern_creat_90255fe6-30f1-4359-a2a8-2ab30d597862_0.png"
                 alt="Modern workspace with vintage touches"
                 width={600}
                 height={400}

@@ -110,7 +110,7 @@ export default function AboutPage() {
       <section className="relative py-20 bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <Image
-            src="/uploads/Subtle_textured_background_with_vintage_paper_tex_7311e1ed-9e13-4dec-97f3-ba062da0e4e1_0.png"
+            src="/uploads/media/Subtle_textured_background_with_vintage_paper_tex_7311e1ed-9e13-4dec-97f3-ba062da0e4e1_0.png"
             alt="Vintage texture background"
             fill
             className="object-cover"
@@ -172,7 +172,7 @@ export default function AboutPage() {
               className="relative"
             >
               <Image
-                src="/uploads/Abstract_representation_of_collaboration_and_crea_b53b3e27-06be-457c-b859-c431e546450c_1.png"
+                src="/uploads/media/Abstract_representation_of_collaboration_and_crea_b53b3e27-06be-457c-b859-c431e546450c_1.png"
                 alt="Abstract representation of collaboration and creativity"
                 width={600}
                 height={400}

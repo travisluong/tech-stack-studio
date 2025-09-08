@@ -215,7 +215,7 @@ export default function ContactPage() {
       <section className="relative py-20 bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <Image
-            src="/uploads/Translucent_glass_effect_backgrounds_with_subtle__c237b576-5f32-4fe8-98dd-4d3805568f89_2.png"
+            src="/uploads/media/Translucent_glass_effect_backgrounds_with_subtle__c237b576-5f32-4fe8-98dd-4d3805568f89_2.png"
             alt="Glass effect background"
             fill
             className="object-cover"

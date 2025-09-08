@@ -1,6 +1,6 @@
 # AI Team Member Profile Image Prompts
 
-This file contains the Midjourney prompts for generating profile images for each team member. These images should be created and saved in the `/public/team/` directory.
+This file contains the Midjourney prompts for generating profile images for each team member. These images should be created and saved in the `/public/uploads/team/` directory.
 
 ## Team Member Prompts
 
@@ -72,7 +72,7 @@ Futuristic anime AI researcher with piercing intelligent eyes, surrounded by flo
 
 1. Generate each image using the provided Midjourney prompts
 2. Convert to WebP format for web optimization
-3. Save in `/public/team/` directory with exact filenames listed above
+3. Save in `/public/uploads/team/` directory with exact filenames listed above
 4. Update the TeamCard component to use actual images instead of placeholder initials
 5. Test image loading and performance across different devices
 
