@@ -16,6 +16,7 @@ export default function TeamCard({ member, index }: TeamCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const playPromiseRef = useRef<Promise<void> | null>(null);
 
   // Preload video after image loads
   useEffect(() => {
@@ -29,15 +30,31 @@ export default function TeamCard({ member, index }: TeamCardProps) {
     setIsHovered(true);
     if (videoRef.current) {
       videoRef.current.currentTime = 0;
-      videoRef.current.play().catch(console.error);
+      playPromiseRef.current = videoRef.current.play();
+      playPromiseRef.current?.catch(console.error);
     }
   };
 
   const handleMouseLeave = () => {
     setIsHovered(false);
     if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
+      // Wait for play promise to resolve before pausing
+      if (playPromiseRef.current) {
+        playPromiseRef.current
+          .then(() => {
+            if (videoRef.current && !isHovered) {
+              videoRef.current.pause();
+              videoRef.current.currentTime = 0;
+            }
+          })
+          .catch(() => {
+            // Play was already interrupted, no need to pause
+          });
+      } else {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
+      }
+      playPromiseRef.current = null;
     }
   };
 
