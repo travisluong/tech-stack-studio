@@ -1,5 +1,6 @@
 "use client";
 
+import { notFound } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,7 +8,15 @@ import { ArrowRight, Users, Zap, Shield } from "lucide-react";
 import TeamGrid from "@/components/team/TeamGrid";
 import SectionDivider from "@/components/ui/SectionDivider";
 
+// Toggle this to enable/disable the team page
+const TEAM_PAGE_ENABLED = false;
+
 export default function TeamPage() {
+  // Return 404 if page is disabled
+  if (!TEAM_PAGE_ENABLED) {
+    notFound();
+  }
+
   const collaborationFeatures = [
     {
       icon: <Zap className="w-6 h-6" />,
